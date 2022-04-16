@@ -54,7 +54,7 @@ git push --mirror https://github.com/wangsongc/target.git
       await exec('git', [
         'clone',
         `--branch ${source_branchs[index]}`,
-        generateURL(value, token),
+        generateURL(sourceRepos[i], token),
         workdir
       ]);
 
