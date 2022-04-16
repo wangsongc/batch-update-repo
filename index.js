@@ -1,7 +1,7 @@
-const github = require('@actions/github');
-import * as core from '@actions/core'
-import { exec } from '@actions/exec'
-import { URL } from 'url'
+// const github = require('@actions/github');
+const core = require('@actions/core');
+const { exec } = require('@actions/exec');
+const { URL } = require('url');
 
 // try {
 //   // `who-to-greet` input defined in action metadata file
