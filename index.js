@@ -50,7 +50,7 @@ git checkout -b v1.1 --depth=1
 git push --mirror https://github.com/wangsongc/target.git
  */
   try {
-    for (let index = 0; index < sourceRepos.length; i++) {
+    for (let index = 0; index < sourceRepos.length; index++) {
       await exec('git', [
         'clone',
         `--branch ${source_branchs[index]}`,
