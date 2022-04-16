@@ -1,13 +1,24 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
+  github_token:
+    description: Base64 encoded Personal Access Token
+    required: true
+  source_repo:
     description: 'Who to greet'
     required: true
-    default: 'World'
+  source_tag:
+    description: 'Who to greet'
+    required: true
+  source_branch:
+    description: 'Who to greet'
+    required: false
+  target_repo:
+    description: 'Who to greet'
+    required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  status:
+    description: 'status'
 runs:
   using: 'node16'
   main: 'index.js'
