@@ -43,14 +43,14 @@ git push --mirror https://github.com/wangsongc/target.git
  */
   try {
     sourceRepos.forEach((value, index) => {
-      exec('git', [
+      await exec('git', [
         'clone',
         `--branch ${source_branchs[index]}`,
         generateURL(value, token),
         workdir,
       ]);
 
-      exec(
+      await exec(
         'git',
         ['checkout', `-b ${source_tags[index]} --depth=1`],
         {
@@ -58,7 +58,7 @@ git push --mirror https://github.com/wangsongc/target.git
         }
       );
 
-      exec(
+      await exec(
         'git',
         ['push', '--mirror', generateURL(targetRepos[index], token)],
         {
@@ -77,4 +77,4 @@ git push --mirror https://github.com/wangsongc/target.git
   //
 }
 
-await run()
+run()
