@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const { exec } = require('@actions/exec');
-const { url } = require('inspector');
 const { URL } = require('url');
 
 const getProjectName = (repoUrl) => {
@@ -17,7 +16,6 @@ function generateURL(repoUrl, token) {
 const token = core.getInput('github_token', { required: true }).trim();
 const sourceRepos = core
   .getInput('source_repo', { required: true })
-  .trim()
   .split(',')
   .map((item) => {
     return generateURL(item.trim(), token);
@@ -33,14 +31,13 @@ const source_tags = core
   .getInput('source_tag', { required: true })
   .split(',')
   .map((item) => {
-    item.trim();
+    return item.trim();
   });
 const source_branchs = core
   .getInput('source_branch')
-  .trim()
   .split(',')
   .map((item) => {
-    item.trim();
+    return item.trim();
   });
 
 const project_names = sourceRepos.map((item) => {
