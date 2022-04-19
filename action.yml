@@ -1,24 +1,21 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Batch update source code'
+description: 'Batch update source code of the specified tag to the personal repo'
 inputs:
   github_token:
     description: Base64 encoded Personal Access Token
     required: true
   source_repo:
-    description: 'Who to greet'
+    description: 'source_repo'
     required: true
   source_tag:
-    description: 'Who to greet'
+    description: 'source_tag'
     required: true
   source_branch:
-    description: 'Who to greet'
-    required: false
-  target_repo:
-    description: 'Who to greet'
+    description: 'source_branch'
     required: true
-outputs:
-  status:
-    description: 'status'
+  target_repo:
+    description: 'target_repo'
+    required: true
 runs:
   using: 'node16'
   main: 'index.js'

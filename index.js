@@ -20,35 +20,34 @@ const sourceRepos = core
   .trim()
   .split(',')
   .map((item) => {
-    return generateURL(item, token);
+    return generateURL(item.trim(), token);
   });
 const targetRepos = core
   .getInput('target_repo', { required: true })
-  .trim()
   .split(',')
   .map((item) => {
-    return generateURL(item, token);
+    return generateURL(item.trim(), token);
   });
 
 const source_tags = core
   .getInput('source_tag', { required: true })
+  .split(',')
+  .map((item) => {
+    item.trim();
+  });
+const source_branchs = core
+  .getInput('source_branch')
   .trim()
-  .split(',');
-const source_branchs = core.getInput('source_branch').trim().split(',');
+  .split(',')
+  .map((item) => {
+    item.trim();
+  });
 
 const project_names = sourceRepos.map((item) => {
   return getProjectName(item);
 });
 
 async function run() {
-  /**
- * git clone https://oauth2:${token}@github.com/vuejs/core.git -b main core
-cd core
-git remote set-url origin https://oauth2:${token}@github.com/wangsongc/vue-next.git
-git checkout v3.2.31
-git push origin HEAD:main
- * 
- */
   try {
     for (let index = 0; index < sourceRepos.length; index++) {
       await exec('git', [
