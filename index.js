@@ -70,9 +70,13 @@ git push origin HEAD:main
         cwd: `./${project_names[index]}`
       });
 
-      await exec('git', ['push', 'origin', `HEAD:${source_branchs[index]}`], {
-        cwd: `./${project_names[index]}`
-      });
+      await exec(
+        'git',
+        ['push', 'origin', `HEAD:${source_branchs[index]}`, '--force'],
+        {
+          cwd: `./${project_names[index]}`
+        }
+      );
     }
   } catch (error) {
     core.error(error);
