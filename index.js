@@ -58,15 +58,19 @@ git push origin HEAD:main
         `${project_names[index]}`
       ]);
 
-      await exec('git', ['remote', `set-url origin ${targetRepos[index]}`], {
-        cwd: `./${project_names[index]}`
-      });
+      await exec(
+        'git',
+        ['remote', 'set-url', 'origin', `${targetRepos[index]}`],
+        {
+          cwd: `./${project_names[index]}`
+        }
+      );
 
       await exec('git', ['checkout', `${source_tags[index]}`], {
         cwd: `./${project_names[index]}`
       });
 
-      await exec('git', ['push', `origin HEAD:${source_branchs[index]}`], {
+      await exec('git', ['push', 'origin', `HEAD:${source_branchs[index]}`], {
         cwd: `./${project_names[index]}`
       });
     }
