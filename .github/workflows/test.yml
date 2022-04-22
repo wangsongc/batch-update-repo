@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version'
+        required: true
+        default: 'v1.3.12'
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: use myaction
+        uses: wangsongc/myaction@${{ github.event.inputs.version }}
+        with:
+          github_token: ${{ secrets.TEST_AUTH_TOKEN }}
+          source_repo: 'https://github.com/vuejs/core.git, https://github.com/intlify/vue-i18n-next.git'
+          source_branch: 'main, master'
+          source_tag: 'v3.2.32, v9.1.8'
+          target_repo: 'https://github.com/wangsongc/target.git, https://github.com/wangsongc/target1.git'

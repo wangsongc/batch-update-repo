@@ -9,7 +9,7 @@ inputs:
     required: true
   source_tag:
     description: 'source_tag'
-    required: true
+    required: false
   source_branch:
     description: 'source_branch'
     required: true

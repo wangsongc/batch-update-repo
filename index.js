@@ -50,6 +50,7 @@ async function run() {
       await exec('git', [
         'clone',
         `--branch=${source_branchs[index]}`,
+        '--bare',
         sourceRepos[index],
         `${project_names[index]}`
       ]);
@@ -61,18 +62,25 @@ async function run() {
           cwd: `./${project_names[index]}`
         }
       );
-
-      await exec('git', ['checkout', `${source_tags[index]}`], {
-        cwd: `./${project_names[index]}`
-      });
-
-      await exec(
-        'git',
-        ['push', 'origin', `HEAD:${source_branchs[index]}`, '--force'],
-        {
+      //git push --mirror gihttps://github.com/wangsongc/target.git
+      //同步仓库
+      if (source_tags.length === 0) {
+        await exec('git', ['push', '--mirror', '--force'], {
           cwd: `./${project_names[index]}`
-        }
-      );
+        });
+      } else {
+        await exec('git', ['checkout', `${source_tags[index]}`], {
+          cwd: `./${project_names[index]}`
+        });
+
+        await exec(
+          'git',
+          ['push', 'origin', `HEAD:${source_branchs[index]}`, '--force'],
+          {
+            cwd: `./${project_names[index]}`
+          }
+        );
+      }
     }
   } catch (error) {
     core.error(error);
