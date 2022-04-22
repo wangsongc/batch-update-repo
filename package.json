@@ -1,5 +1,5 @@
 {
-  "name": "myaction",
+  "name": "batch-update-repo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangsongc/myaction.git"
+    "url": "git+https://github.com/wangsongc/batch-update-repo.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wangsongc/myaction/issues"
+    "url": "https://github.com/wangsongc/batch-update-repo/issues"
   },
-  "homepage": "https://github.com/wangsongc/myaction#readme",
+  "homepage": "https://github.com/wangsongc/batch-update-repo#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.1",
