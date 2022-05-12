@@ -23,14 +23,23 @@ inputs:
 ```
 
 ## Example usage
-
+- Synchronize source code according to tag.
 ```yaml
       - name: use myaction
         uses: wangsongc/myaction@v1.3.10
         with:
           github_token: ${{ secrets.TEST_AUTH_TOKEN }}
-          source_repo: 'https://github.com/vuejs/core.git,https://github.com/intlify/vue-i18n-next.git'
-          source_branch: 'main,master'
-          source_tag: 'v3.2.32,v9.1.8'
-          target_repo: 'https://github.com/wangsongc/vue-next.git,https://github.com/wangsongc/vue-i18n-next.git'
+          source_repo: 'https://github.com/vuejs/core.git, https://github.com/intlify/vue-i18n-next.git'
+          source_branch: 'main, master'
+          source_tag: 'v3.2.32, v9.1.8'
+          target_repo: 'https://github.com/wangsongc/vue-next.git, https://github.com/wangsongc/vue-i18n-next.git'
+```
+- Synchronize source code mirror.
+```yaml
+      - name: use myaction
+        uses: wangsongc/myaction@v1.3.10
+        with:
+          github_token: ${{ secrets.TEST_AUTH_TOKEN }}
+          source_repo: 'https://github.com/vuejs/core.git, https://github.com/intlify/vue-i18n-next.git'
+          target_repo: 'https://github.com/wangsongc/vue-next.git, https://github.com/wangsongc/vue-i18n-next.git'
 ```
