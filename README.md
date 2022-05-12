@@ -13,10 +13,10 @@ inputs:
     required: true
   source_tag:
     description: 'source_tag'
-    required: true
+    required: false
   source_branch:
     description: 'source_branch'
-    required: true
+    required: false
   target_repo:
     description: 'target_repo'
     required: true
@@ -26,7 +26,7 @@ inputs:
 - Synchronize source code according to tag.
 ```yaml
       - name: use myaction
-        uses: wangsongc/myaction@v1.3.10
+        uses: wangsongc/batch-update-repo@v1.0.0
         with:
           github_token: ${{ secrets.TEST_AUTH_TOKEN }}
           source_repo: 'https://github.com/vuejs/core.git, https://github.com/intlify/vue-i18n-next.git'
@@ -37,7 +37,7 @@ inputs:
 - Synchronize source code mirror.
 ```yaml
       - name: use myaction
-        uses: wangsongc/myaction@v1.3.10
+        uses: wangsongc/batch-update-repo@v1.0.0
         with:
           github_token: ${{ secrets.TEST_AUTH_TOKEN }}
           source_repo: 'https://github.com/vuejs/core.git, https://github.com/intlify/vue-i18n-next.git'
