@@ -1,5 +1,5 @@
 # batch-update-repo
-Batch update source code of the specified tag to the personal repo.
+Batch update source code to the personal repo.
 
 ## Inputs
 
