@@ -52,7 +52,7 @@ async function run() {
     for (let index = 0; index < sourceRepos.length; index++) {
       await exec('git', [
         'clone',
-        `--branch=${source_branchs[index]}`,
+        // `--branch=${source_branchs[index]}`,
         '--bare',
         sourceRepos[index],
         `${project_names[index]}`
