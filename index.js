@@ -50,13 +50,21 @@ const project_names = sourceRepos.map((item) => {
 async function run() {
   try {
     for (let index = 0; index < sourceRepos.length; index++) {
-      await exec('git', [
-        'clone',
-        // `--branch=${source_branchs[index]}`,
-        '--bare',
-        sourceRepos[index],
-        `${project_names[index]}`
-      ]);
+      if (source_tags.length === 0 && source_branchs.length === 0) {
+        await exec('git', [
+          'clone',
+          '--bare',
+          sourceRepos[index],
+          `${project_names[index]}`
+        ]);
+      } else {
+        await exec('git', [
+          'clone',
+          `--branch=${source_branchs[index]}`,
+          sourceRepos[index],
+          `${project_names[index]}`
+        ]);
+      }
 
       await exec(
         'git',
