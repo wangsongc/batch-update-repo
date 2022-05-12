@@ -12,7 +12,7 @@ inputs:
     required: false
   source_branch:
     description: 'source_branch'
-    required: true
+    required: false
   target_repo:
     description: 'target_repo'
     required: true

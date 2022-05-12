@@ -27,18 +27,21 @@ const targetRepos = core
     return generateURL(item.trim(), token);
   });
 
-const source_tags = core
-  .getInput('source_tag', { required: true })
-  .split(',')
-  .map((item) => {
+const source_tags_ori = core.getInput('source_tag', { required: false });
+let source_tags = [];
+if (source_tags_ori) {
+  source_tags = source_tags_ori.split(',').map((item) => {
     return item.trim();
   });
-const source_branchs = core
-  .getInput('source_branch')
-  .split(',')
-  .map((item) => {
+}
+
+const source_branchs_ori = core.getInput('source_branch', { required: false });
+let source_branchs = [];
+if (source_branchs_ori) {
+  source_branchs = source_branchs_ori.split(',').map((item) => {
     return item.trim();
   });
+}
 
 const project_names = sourceRepos.map((item) => {
   return getProjectName(item);
@@ -64,7 +67,7 @@ async function run() {
       );
       //git push --mirror gihttps://github.com/wangsongc/target.git
       //同步仓库
-      if (source_tags.length === 0) {
+      if (source_tags.length === 0 && source_branchs.length === 0) {
         await exec('git', ['push', '--mirror', '--force'], {
           cwd: `./${project_names[index]}`
         });
